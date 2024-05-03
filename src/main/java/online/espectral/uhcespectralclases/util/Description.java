@@ -20,8 +20,9 @@ public class Description {
         msg.add(ChatColor.GOLD + "/class selector" + ChatColor.RESET + ": Reparte el selector de clases a los jugadores que no lo tengan");
         msg.add(ChatColor.GOLD + "/class list" + ChatColor.RESET + ": Lista el ID de las clases con el que funcionan los comandos");
         msg.add(ChatColor.GOLD + "/class give <Jugador> <UhcClass>" + ChatColor.RESET + ": Otorga una clase al jugador");
+        msg.add(ChatColor.GOLD + "/class remove <Jugador>" + ChatColor.RESET + ": Elimina la clase que tenga el jugador");
         msg.add(ChatColor.GOLD + "/class get <Jugador>" + ChatColor.RESET + ": Te muestra la clase que lleva equipada el jugador");
-        msg.add(ChatColor.GOLD + "/class start" + ChatColor.RESET + ": Reparte el selector de clases a los jugadores que no lo tengan");
+        msg.add(ChatColor.GOLD + "/class start" + ChatColor.RESET + ": Reparte los items y habilidades especiales de cada clase a los jugadores");
         msg.add(ChatColor.GOLD + "/class reload" + ChatColor.RESET + ": Borra las clases y efectos aplicados de todos los jugadores");
         msg.add(ChatColor.GOLD + "/class help" + ChatColor.RESET + ": Mostrar esta lista");
         msg.add(ChatColor.GOLD + "/class credits" + ChatColor.RESET + ": Creditos e Informacion del Plugin");

@@ -49,6 +49,7 @@ public class HostMenu implements Listener {
                     Server server = player.getServer();
                     player.closeInventory();
                     for (Player player1 : server.getOnlinePlayers()) {
+                        uhcGame.addPlayer(player1.getUniqueId());
                         if (!player1.getInventory().contains(SelectorItem.give())) {
                             player1.getInventory().addItem(SelectorItem.give());
                             ServerMessage.unicastSuccess(player1, "Has recibido el " + SelectorItem.give().getItemMeta().getDisplayName());

@@ -6,7 +6,6 @@ import online.espectral.uhcespectralclases.game.UhcClass;
 import online.espectral.uhcespectralclases.game.UhcGame;
 import online.espectral.uhcespectralclases.game.UhcPlayer;
 import online.espectral.uhcespectralclases.gui.HostMenu;
-import online.espectral.uhcespectralclases.item.BreezeWandItem;
 import online.espectral.uhcespectralclases.item.SelectorItem;
 import online.espectral.uhcespectralclases.util.Description;
 import online.espectral.uhcespectralclases.util.ServerMessage;
@@ -18,6 +17,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
@@ -41,6 +41,7 @@ public class classCommand implements CommandExecutor, TabCompleter {
         options.add("list");
         options.add("reload");
         options.add("credits");
+        options.add("remove");
     }
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -50,7 +51,7 @@ public class classCommand implements CommandExecutor, TabCompleter {
                 switch (strings[0]) {
                     case "selector":
                         for (Player player1 : server.getOnlinePlayers()) {
-                            uhcGame.addPlayer(player.getUniqueId());
+                            uhcGame.addPlayer(player1.getUniqueId());
                             if (!player1.getInventory().contains(SelectorItem.give())) {
                                 player1.getInventory().addItem(SelectorItem.give());
                                 ServerMessage.unicastSuccess(player1, "Has recibido el " + SelectorItem.give().getItemMeta().getDisplayName());
@@ -65,9 +66,7 @@ public class classCommand implements CommandExecutor, TabCompleter {
                         if (strings.length == 3) {
                             Player target = server.getPlayer(strings[1]);
                             if (target != null) {
-                                if (uhcGame.getPlayer(player.getUniqueId()) == null) {
-                                    uhcGame.addPlayer(player.getUniqueId());
-                                }
+                                uhcGame.addPlayer(player.getUniqueId());
                                 UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
                                 if (uhcPlayer != null && strings[2] != null) {
                                     if (strings[2].equalsIgnoreCase("WITCH")) {
@@ -75,70 +74,85 @@ public class classCommand implements CommandExecutor, TabCompleter {
                                         WitchClassAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("BREEZE")) {
                                         uhcPlayer.setUhcClass(UhcClass.BREEZE);
                                         BreezeAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("SPIDER")) {
                                         uhcPlayer.setUhcClass(UhcClass.SPIDER);
                                         SpiderAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("DOLPHIN")) {
                                         uhcPlayer.setUhcClass(UhcClass.DOLPHIN);
                                         DolphinAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("IRON_GOLEM")) {
                                         uhcPlayer.setUhcClass(UhcClass.IRON_GOLEM);
                                         IronGolemAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("WARRIOR")) {
                                         uhcPlayer.setUhcClass(UhcClass.WARRIOR);
                                         WarriorAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("GUNNER")) {
                                         uhcPlayer.setUhcClass(UhcClass.GUNNER);
                                         GunnerAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("WARDEN")) {
                                         uhcPlayer.setUhcClass(UhcClass.BUILDER);
                                         BuilderAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("MINER")) {
                                         uhcPlayer.setUhcClass(UhcClass.MINER);
                                         MinerAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("ANTMAN")) {
                                         uhcPlayer.setUhcClass(UhcClass.ANTMAN);
                                         AntmanClassAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("WITHER")) {
                                         uhcPlayer.setUhcClass(UhcClass.WITHER);
                                         WitherAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else if (strings[2].equalsIgnoreCase("BLAZE")) {
                                         uhcPlayer.setUhcClass(UhcClass.BLAZE);
                                         BlazeAbility.init(uhcPlayer);
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else {
                                         ServerMessage.unicastError(player, "No se encuentra la clase " + strings[2] + ", puede que la hayas escrito mal. Puedes consultar las clases mirando el comando /class list");
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
                                     }
                                 }
                             } else {
                                 ServerMessage.unicastError(player, "No se encuentra el jugador " + strings[1]);
+                                player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
                             }
                         } else {
                             ServerMessage.unicastError(player, "Comando Incompleto: /class give <Jugador> <UhcClass>");
+                            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
                         }
                         break;
                     case "get":
@@ -149,17 +163,22 @@ public class classCommand implements CommandExecutor, TabCompleter {
                                 if (uhcPlayer != null) {
                                     if (uhcPlayer.hasUhcClass()) {
                                         ServerMessage.unicastInfo(player, target.getName() + " tiene la clase " + uhcPlayer.getUhcClass());
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else {
                                         ServerMessage.unicastError(player, target.getName() + " no tiene ninguna clase aún");
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
                                     }
                                 } else {
                                     ServerMessage.unicastError(player, target.getName() + " no esta jugando la partida :P");
+                                    player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
                                 }
                             } else {
                                 ServerMessage.unicastError(player, "No se encuentra el jugador " + strings[1]);
+                                player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
                             }
                         } else {
                             ServerMessage.unicastError(player, "Comando Incompleto: /class get <Jugador>");
+                            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
                         }
                         break;
                     case "start":
@@ -185,6 +204,38 @@ public class classCommand implements CommandExecutor, TabCompleter {
                             player.sendMessage(Description.creditsMessage().get(i));
                         }
                         break;
+                    case "remove":
+                        if (strings.length == 2) {
+                            Player target = server.getPlayer(strings[1]);
+                            if (target != null) {
+                                UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
+                                if (uhcPlayer != null) {
+                                    if (uhcPlayer.hasUhcClass()) {
+                                        ServerMessage.unicastInfo(target, ChatColor.GRAY + "Ya no eres la clase " + uhcPlayer.getUhcClass());
+                                        target.playSound(target, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
+                                        ServerMessage.unicastSuccess(player, "Se la eliminado la clase de " + target.getName());
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
+                                        for (PotionEffect potionEffect : target.getActivePotionEffects()) {
+                                            target.removePotionEffect(potionEffect.getType());
+                                        }
+                                        uhcPlayer.setUhcClass(null);
+                                        uhcGame.removePlayer(uhcPlayer.getUuid());
+                                    } else {
+                                        ServerMessage.unicastError(player, target.getName() + " no tiene ninguna clase aún");
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
+                                    }
+                                } else {
+                                    ServerMessage.unicastError(player, target.getName() + " no esta jugando la partida :P");
+                                    player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
+                                }
+                            } else {
+                                ServerMessage.unicastError(player, "No se encuentra el jugador " + strings[1]);
+                                player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
+                            }
+                        } else {
+                            ServerMessage.unicastError(player, "Comando Incompleto: /class remove <Jugador>");
+                            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
+                        }
                 }
             } else {
                 HostMenu.open(player);

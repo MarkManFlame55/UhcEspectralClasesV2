@@ -25,6 +25,10 @@ public class SelectorMenu implements Listener {
         Inventory inventory = Bukkit.createInventory(player, 54, inventoryName);
 
         UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
+        if (uhcGame.getPlayer(player.getUniqueId()) == null) {
+            uhcGame.addPlayer(player.getUniqueId());
+            uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
+        }
 
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, MenuItems.empty());
@@ -54,144 +58,145 @@ public class SelectorMenu implements Listener {
             ItemStack itemStack = e.getCurrentItem();
             Player player = (Player) e.getWhoClicked();
             uhcGame.addPlayer(player.getUniqueId());
-            UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
             if (itemStack != null) {
-                if (itemStack.isSimilar(MenuItems.cooldownToggle(uhcPlayer))) {
-                    uhcPlayer.setSeeCooldown(!uhcPlayer.canSeeCooldown());
-                    e.getInventory().setItem(53, MenuItems.cooldownToggle(uhcPlayer));
-                } else {
-                    assert itemStack.getItemMeta() != null;
-                    if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Witch Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.WITCH);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.witch().size(); i++) {
-                                player.sendMessage(Description.witch().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Breeze Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.BREEZE);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.breeze().size(); i++) {
-                                player.sendMessage(Description.breeze().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Spider Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.SPIDER);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.spider().size(); i++) {
-                                player.sendMessage(Description.spider().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Dolphin Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.DOLPHIN);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.dolphin().size(); i++) {
-                                player.sendMessage(Description.dolphin().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Iron Golem Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.IRON_GOLEM);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.iron_golem().size(); i++) {
-                                player.sendMessage(Description.iron_golem().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Warrior Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.WARRIOR);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.warrior().size(); i++) {
-                                player.sendMessage(Description.warrior().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Archer Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.GUNNER);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.gunner().size(); i++) {
-                                player.sendMessage(Description.gunner().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Builder Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.BUILDER);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.builder().size(); i++) {
-                                player.sendMessage(Description.builder().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Miner Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.MINER);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.miner().size(); i++) {
-                                player.sendMessage(Description.miner().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Antman Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.ANTMAN);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.antman().size(); i++) {
-                                player.sendMessage(Description.antman().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Wither Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.WITHER);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.wither().size(); i++) {
-                                player.sendMessage(Description.wither().get(i));
-                            }
-                            player.closeInventory();
-                        }
-                    } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Blaze Selector Item")) {
-                        if (e.isLeftClick()) {
-                            uhcPlayer.setUhcClass(UhcClass.BLAZE);
-                        }
-                        if (e.isRightClick()) {
-                            for (int i = 0; i < Description.blaze().size(); i++) {
-                                player.sendMessage(Description.blaze().get(i));
-                            }
-                            player.closeInventory();
-                        }
+                UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
+                if (uhcPlayer != null) {
+                    if (itemStack.isSimilar(MenuItems.cooldownToggle(uhcPlayer))) {
+                        uhcPlayer.setSeeCooldown(!uhcPlayer.canSeeCooldown());
+                        e.getInventory().setItem(53, MenuItems.cooldownToggle(uhcPlayer));
                     } else {
-                        return;
-                    }
-                    if (e.getClick().isLeftClick()) {
-                        player.closeInventory();
-                        player.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
-                        ServerMessage.broadcast(player.getDisplayName() + " ha seleccionado la clase " + itemStack.getItemMeta().getDisplayName());
+                        assert itemStack.getItemMeta() != null;
+                        if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Witch Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.WITCH);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.witch().size(); i++) {
+                                    player.sendMessage(Description.witch().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Breeze Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.BREEZE);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.breeze().size(); i++) {
+                                    player.sendMessage(Description.breeze().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Spider Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.SPIDER);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.spider().size(); i++) {
+                                    player.sendMessage(Description.spider().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Dolphin Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.DOLPHIN);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.dolphin().size(); i++) {
+                                    player.sendMessage(Description.dolphin().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Iron Golem Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.IRON_GOLEM);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.iron_golem().size(); i++) {
+                                    player.sendMessage(Description.iron_golem().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Warrior Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.WARRIOR);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.warrior().size(); i++) {
+                                    player.sendMessage(Description.warrior().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Archer Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.GUNNER);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.gunner().size(); i++) {
+                                    player.sendMessage(Description.gunner().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Builder Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.BUILDER);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.builder().size(); i++) {
+                                    player.sendMessage(Description.builder().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Miner Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.MINER);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.miner().size(); i++) {
+                                    player.sendMessage(Description.miner().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Antman Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.ANTMAN);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.antman().size(); i++) {
+                                    player.sendMessage(Description.antman().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Wither Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.WITHER);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.wither().size(); i++) {
+                                    player.sendMessage(Description.wither().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Blaze Selector Item")) {
+                            if (e.isLeftClick()) {
+                                uhcPlayer.setUhcClass(UhcClass.BLAZE);
+                            }
+                            if (e.isRightClick()) {
+                                for (int i = 0; i < Description.blaze().size(); i++) {
+                                    player.sendMessage(Description.blaze().get(i));
+                                }
+                                player.closeInventory();
+                            }
+                        } else {
+                            return;
+                        }
+                        if (e.getClick().isLeftClick()) {
+                            player.closeInventory();
+                            player.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
+                            ServerMessage.broadcast(player.getDisplayName() + " ha seleccionado la clase " + itemStack.getItemMeta().getDisplayName());
+                        }
                     }
                 }
             }
-
         }
     }
 }
