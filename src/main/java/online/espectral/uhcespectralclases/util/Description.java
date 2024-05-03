@@ -232,7 +232,7 @@ public class Description {
         msg.add(ChatColor.DARK_GRAY + "(https://github.com/carlosdiamon)");
         msg.add("");
         msg.add("Para mas informacion sobre futuras versiones o Bug Fixes, puedes unirte al Discord de UHC Espectral o revisar el repositorio de GitHub");
-        msg.add("repo");
+        msg.add(ChatColor.DARK_GRAY + "" + ChatColor.UNDERLINE + "https://github.com/MarkManFlame55/UhcEspectralClasesV2");
         msg.add("");
         msg.add(ChatColor.BLACK + "===================");
         return msg;

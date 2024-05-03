@@ -2,6 +2,7 @@ name: UhcEspectralClases
 version: '${project.version}'
 main: online.espectral.uhcespectralclases.UhcEspectralClases
 api-version: '1.20'
+depend: [WorldEdit]
 commands:
   class:
     description: "Main Command for UHC ESPECTRAL CLASES"
