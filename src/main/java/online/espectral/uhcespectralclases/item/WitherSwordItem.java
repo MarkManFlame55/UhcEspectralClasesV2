@@ -42,15 +42,20 @@ public class WitherSwordItem implements Listener {
                 UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
                 if (uhcPlayer != null && uhcPlayer.hasUhcClass() && uhcPlayer.getUhcClass().equals(UhcClass.WITHER)) {
                     if (e.getEntity() instanceof LivingEntity livingEntity) {
-                        livingEntity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, Time.secondsToTicks(3), 1, false, false, false));
+                        if (livingEntity instanceof Player player1) {
+                            if (!player1.isBlocking()) {
+                                player1.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, Time.secondsToTicks(3), 1, false, false, false));
+                            }
+                        } else {
+                            livingEntity.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, Time.secondsToTicks(3), 1, false, false, false));
+                        }
+
+                    } else {
+                        e.setCancelled(true);
+                        ServerMessage.unicastError(player, ServerMessage.NOT_ALLOWED);
                     }
-                } else {
-                    e.setCancelled(true);
-                    ServerMessage.unicastError(player, ServerMessage.NOT_ALLOWED);
                 }
             }
         }
     }
-
-
 }

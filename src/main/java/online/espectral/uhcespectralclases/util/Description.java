@@ -99,7 +99,7 @@ public class Description {
         msg.add("");
         msg.add("Los Golems sois los tanques del equipo en pocas palabras. Si un golem consigue Proteccion IV ya puede chupar todo el daño que quiera.");
         msg.add("");
-        msg.add("Todos los Golems cuentan con una reduccion de daño del 50% permanente, pero ser tan robustos os causa ser lentos, por loque tambien recibis " + ChatColor.GRAY + ChatColor.BOLD + "LENTITUD I" + ChatColor.RESET + " permanente.");
+        msg.add("Todos los Golems cuentan con una reduccion de daño del 33% permanente, pero ser tan robustos os causa ser lentos, por loque tambien recibis " + ChatColor.GRAY + ChatColor.BOLD + "LENTITUD I" + ChatColor.RESET + " permanente.");
         msg.add("");
         msg.add("Tambien empezaran con un " + ChatColor.GRAY + ChatColor.BOLD + "Martillo de Golem" + ChatColor.RESET + ", con el que podran pegar un golpe al suelo y levantar a todas las entidades cercanas al impacto. usar la habilidad otorgará al jugador 5 segundos de " + ChatColor.YELLOW + ChatColor.BOLD + "ABSORCIÓN III" + ChatColor.RESET + ChatColor.DARK_GRAY + " (30s Cooldown)");
         msg.add("");
