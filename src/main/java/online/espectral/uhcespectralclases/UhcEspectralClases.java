@@ -26,6 +26,7 @@ public final class UhcEspectralClases extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerMilkPrevnt(), this);
         getServer().getPluginManager().registerEvents(new ClassHurtSounds(), this);
         getServer().getPluginManager().registerEvents(new ClassDeathRemoval(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         //Cosas de Menus
         getServer().getPluginManager().registerEvents(new SelectorMenu(), this);
         getServer().getPluginManager().registerEvents(new HostMenu(), this);

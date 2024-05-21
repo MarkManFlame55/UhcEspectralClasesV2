@@ -56,4 +56,7 @@ public class UhcGame {
     public void removePlayer(UUID uuid) {
         gamePlayers.removeIf(uhcPlayer -> uhcPlayer != null && uhcPlayer.getUuid() == uuid);
     }
+    public List<UhcPlayer> getPlayers()  {
+        return gamePlayers;
+    }
 }

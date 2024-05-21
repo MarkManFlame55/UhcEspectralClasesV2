@@ -1,9 +1,12 @@
 package online.espectral.uhcespectralclases.item;
 
+import com.fastasyncworldedit.core.FaweAPI;
+import com.fastasyncworldedit.core.configuration.Settings;
 import com.sk89q.worldedit.WorldEditException;
 import com.sk89q.worldedit.extent.clipboard.Clipboard;
 import com.sk89q.worldedit.math.transform.AffineTransform;
 import com.sk89q.worldedit.math.transform.Transform;
+import com.sk89q.worldedit.math.transform.Transforms;
 import online.espectral.uhcespectralclases.UhcEspectralClases;
 import online.espectral.uhcespectralclases.game.BuilderStructure;
 import online.espectral.uhcespectralclases.game.UhcClass;
@@ -144,7 +147,7 @@ public class BuilderItem implements Listener {
             }
         }
     }
-    private void rightClickAbility(UhcPlayer uhcPlayer, Location pos) throws WorldEditException {
+    private void rightClickAbility(UhcPlayer uhcPlayer, Location pos) {
         Player player = uhcPlayer.getPlayer();
         World world = pos.getWorld();
         assert world != null;
@@ -155,14 +158,17 @@ public class BuilderItem implements Listener {
         }
         double rotation = 0;
         switch (player.getFacing()) {
-            case EAST -> rotation = 0;
-            case NORTH -> rotation = 90;
-            case WEST -> rotation = 180;
-            case SOUTH -> rotation = 270;
+            case SOUTH -> rotation = 0;
+            case WEST -> rotation = 90;
+            case NORTH -> rotation = 180;
+            case EAST -> rotation = 270;
         }
-        Transform rotate = new AffineTransform().rotateY(rotation);
-        clipboard = clipboard.transform(rotate);
-        assert clipboard != null;
+        AffineTransform rotate = new AffineTransform().rotateY(rotation);
+        try {
+            clipboard = clipboard.transform(rotate);
+        } catch (WorldEditException e) {
+            e.getStackTrace();
+        }
         SchematicManager.pasteSchematic(clipboard, world, pos.getBlockX(), pos.getBlockY(), pos.getBlockZ());
         world.spawnParticle(Particle.WHITE_SMOKE, pos, 50, 1,1,1);
         world.playSound(pos, Sound.BLOCK_AMETHYST_BLOCK_BREAK, 1.0f, 1.0f);
@@ -170,7 +176,6 @@ public class BuilderItem implements Listener {
         if (!player.getGameMode().equals(GameMode.CREATIVE)) {
             int slot = player.getInventory().getHeldItemSlot();
             player.getInventory().setItem(slot, BuilderItem.tool());
-
         }
     }
 }

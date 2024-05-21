@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 public final class  SchematicManager {
 
-    // IMPLEMENTACION DE WORLD EDIT POR PARTE DE CarlosDiamon https://github.com/carlosdiamon
+    // IMPLEMENTACIÓN DE WORLD EDIT POR PARTE DE CarlosDiamon https://github.com/carlosdiamon
 
     public static Clipboard getClipBoard(
             @NotNull final File file,
@@ -74,25 +74,6 @@ public final class  SchematicManager {
             throw new RuntimeException(e);
         }
     }
-    /*
-    public static Region generateCuboid(
-            @NotNull final org.bukkit.World world,
-            final BlockType blockType,
-            final int posX,
-            final int posY,
-            final int posZ
-    ) {
-        final var ww = getWorld(world);
-
-        try(final var editSession = WorldEdit.getInstance().newEditSession(ww)) {
-            final var cuboid = new CuboidRegion(ww, BlockVector3.at(posX, posY, posZ), BlockVector3.at(posX + 20, posY + 10, posZ + 20));
-            editSession.makeCuboidFaces(cuboid, blockType);
-            return cuboid;
-        }
-    }
-
-     */
-
     public static World getWorld(@NotNull final org.bukkit.World world) {
         return new BukkitWorld(world);
     }
