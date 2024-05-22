@@ -236,6 +236,9 @@ public class classCommand implements CommandExecutor, TabCompleter {
                             ServerMessage.unicastError(player, "Comando Incompleto: /class remove <Jugador>");
                             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
                         }
+                        break;
+                    default:
+                        ServerMessage.unicastError(player, "Parametro Desconocido. Haz /class help para ver lista de todos los comandos del plugin");
                 }
             } else {
                 HostMenu.open(player);

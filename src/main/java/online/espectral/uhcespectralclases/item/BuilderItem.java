@@ -158,9 +158,9 @@ public class BuilderItem implements Listener {
         }
         double rotation = 0;
         switch (player.getFacing()) {
-            case SOUTH -> rotation = 0;
+            case NORTH -> rotation = 0;
             case WEST -> rotation = 90;
-            case NORTH -> rotation = 180;
+            case SOUTH -> rotation = 180;
             case EAST -> rotation = 270;
         }
         AffineTransform rotate = new AffineTransform().rotateY(rotation);

@@ -33,7 +33,7 @@ public class CannonItem implements Listener {
     HashMap<UUID, Long> cooldown;
     long cooldownTime = Time.seconds(1);
 
-    public CannonItem() {
+    public  CannonItem() {
         this.cooldown = new HashMap<>();
     }
 
@@ -112,20 +112,20 @@ public class CannonItem implements Listener {
         }
     }
     private void rightClickAbility(Player player) {
-        if (player.getInventory().contains(Material.GUNPOWDER)) {
-            for (int i = 0; i < player.getInventory().getSize(); i++) {
-                ItemStack itemStack1 = player.getInventory().getItem(i);
-                if (itemStack1 != null && itemStack1.getType().equals(Material.GUNPOWDER)) {
-                    if (!player.getGameMode().equals(GameMode.CREATIVE)) {
-                        itemStack1.setAmount(itemStack1.getAmount()-1);
-                    }
-                    Snowball snowball = player.launchProjectile(Snowball.class);
-                    Vector direction = player.getEyeLocation().getDirection();
-                    snowball.setItem(tnt());
-                    snowball.setVelocity(direction.multiply(1));
-                    break;
-                }
+        boolean gotItem = false;
+        for (int i = 0; i < player.getInventory().getSize(); i++) {
+            ItemStack itemStack1 = player.getInventory().getItem(i);
+            if (itemStack1 != null && itemStack1.isSimilar(PluginItems.cannonBullet())) {
+                Snowball snowball = player.launchProjectile(Snowball.class);
+                Vector direction = player.getEyeLocation().getDirection();
+                snowball.setItem(tnt());
+                snowball.setVelocity(direction.multiply(1));
+                gotItem = true;
+                break;
             }
+        }
+        if (!gotItem) {
+            ServerMessage.unicastError(player, "Necesitas Balas de Cañon para usar este item");
         }
     }
 }

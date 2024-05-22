@@ -19,7 +19,7 @@ public class UhcGame {
     public static List<UhcPlayer> gamePlayers = new ArrayList<>();
     public void addPlayer(UUID uuid) {
         for (UhcPlayer uhcPlayer : gamePlayers) {
-            if (uhcPlayer.getUuid() == uuid) {
+            if (uhcPlayer.getUuid().equals(uuid)) {
                 //server.getLogger().warning("UUID " + uuid + " (" + uhcPlayer.getPlayer().getName() + ") ya pertenece a la partida");
                 return;
             }
@@ -47,14 +47,18 @@ public class UhcGame {
     }
     public UhcPlayer getPlayer(UUID uuid) {
         for (UhcPlayer uhcPlayer : gamePlayers) {
-            if (uhcPlayer.getUuid() == uuid) {
+            if (uhcPlayer.getUuid().equals(uuid)) {
                 return uhcPlayer;
             }
         }
         return null;
     }
     public void removePlayer(UUID uuid) {
-        gamePlayers.removeIf(uhcPlayer -> uhcPlayer != null && uhcPlayer.getUuid() == uuid);
+        if (gamePlayers.contains(getPlayer(uuid))) {
+            gamePlayers.remove(getPlayer(uuid));
+        } else {
+            server.getLogger().warning("Player does not exist");
+        }
     }
     public List<UhcPlayer> getPlayers()  {
         return gamePlayers;

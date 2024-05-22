@@ -98,7 +98,8 @@ public class CobwebBallItem implements Listener {
                         relative.setType(Material.COBWEB);
                         new DelayedTask(() -> {
                             relative.setType(Material.AIR);
-                        }, Time.seconds(10));
+                            world.playSound(block.getLocation(), Sound.BLOCK_COBWEB_BREAK, 1.0f, 1.0f);
+                        }, Time.secondsToTicks(10));
                     }
                 }
             }
