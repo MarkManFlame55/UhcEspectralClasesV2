@@ -99,7 +99,7 @@ public class Description {
         msg.add("");
         msg.add("Los Golems sois los tanques del equipo en pocas palabras. Si un golem consigue Proteccion IV ya puede chupar todo el daño que quiera.");
         msg.add("");
-        msg.add("Todos los Golems cuentan con una reduccion de daño del 33% permanente, pero ser tan robustos os causa ser lentos, por loque tambien recibis " + ChatColor.GRAY + ChatColor.BOLD + "LENTITUD I" + ChatColor.RESET + " permanente.");
+        msg.add("Todos los Golems cuentan con una reduccion de daño del 33% permanente, pero ser tan robustos os causa ser lentos, por lo que tambien recibis " + ChatColor.GRAY + ChatColor.BOLD + "LENTITUD I" + ChatColor.RESET + " permanente.");
         msg.add("");
         msg.add("Tambien empezaran con un " + ChatColor.GRAY + ChatColor.BOLD + "Martillo de Golem" + ChatColor.RESET + ", con el que podran pegar un golpe al suelo y levantar a todas las entidades cercanas al impacto. usar la habilidad otorgará al jugador 5 segundos de " + ChatColor.YELLOW + ChatColor.BOLD + "ABSORCIÓN III" + ChatColor.RESET + ChatColor.DARK_GRAY + " (30s Cooldown)");
         msg.add("");
@@ -131,7 +131,9 @@ public class Description {
         msg.add("");
         msg.add("Los Cañoneros empezais con un casco de Hierro equipado con " + ChatColor.RED + ChatColor.BOLD + "Proteccion contra explosiones V" + ChatColor.RESET + " y un " + ChatColor.RED + "Cañon de Polvora");
         msg.add("");
-        msg.add("Este " + ChatColor.RED + "Cañon de Polvora" + ChatColor.RESET + " consume Polvora de tu inventario para disparar Mini-TNTs que explotaran en cuento toquen algo. " + ChatColor.DARK_GRAY + "(1s Cooldown entre disparos)");
+        msg.add("Este " + ChatColor.RED + "Cañon de Polvora" + ChatColor.RESET + " consume " + ChatColor.GRAY + "Balas de Cañon" + ChatColor.RESET + " de tu inventario para disparar Mini-TNTs que explotaran en cuento toquen algo. " + ChatColor.DARK_GRAY + "(1s Cooldown entre disparos)");
+        msg.add("");
+        msg.add("Las " + ChatColor.GRAY + "Balas de Cañon" + ChatColor.RESET + " se craftean con uno de polvora, uno de redstone y uno de arena. Colocarlos en un crafteo te dara 2 " + ChatColor.GRAY + "Balas de Cañon");
         msg.add("");
         msg.add(ChatColor.BLACK + "===================");
         return msg;

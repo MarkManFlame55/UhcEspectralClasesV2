@@ -66,8 +66,8 @@ public class classCommand implements CommandExecutor, TabCompleter {
                         if (strings.length == 3) {
                             Player target = server.getPlayer(strings[1]);
                             if (target != null) {
-                                uhcGame.addPlayer(player.getUniqueId());
-                                UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
+                                uhcGame.addPlayer(target.getUniqueId());
+                                UhcPlayer uhcPlayer = uhcGame.getPlayer(target.getUniqueId());
                                 if (uhcPlayer != null && strings[2] != null) {
                                     if (strings[2].equalsIgnoreCase("WITCH")) {
                                         uhcPlayer.setUhcClass(UhcClass.WITCH);
