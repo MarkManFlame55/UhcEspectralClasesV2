@@ -16,6 +16,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.awt.*;
+
 public class SelectorMenu implements Listener {
 
     static UhcGame uhcGame = UhcEspectralClases.getUhcGame();
@@ -46,6 +48,7 @@ public class SelectorMenu implements Listener {
         inventory.setItem(32, MenuItems.antman(uhcPlayer));
         inventory.setItem(33, MenuItems.wither(uhcPlayer));
         inventory.setItem(34, MenuItems.blaze(uhcPlayer));
+        inventory.setItem(45, MenuItems.credits());
         inventory.setItem(53, MenuItems.cooldownToggle(uhcPlayer));
 
         player.openInventory(inventory);
@@ -64,6 +67,12 @@ public class SelectorMenu implements Listener {
                     if (itemStack.isSimilar(MenuItems.cooldownToggle(uhcPlayer))) {
                         uhcPlayer.setSeeCooldown(!uhcPlayer.canSeeCooldown());
                         e.getInventory().setItem(53, MenuItems.cooldownToggle(uhcPlayer));
+                    } else if (itemStack.isSimilar(MenuItems.credits())) {
+                        for (String i : Description.creditsMessage()) {
+                            player.sendMessage(i);
+                        }
+                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 2.0f);
+                        player.closeInventory();
                     } else {
                         assert itemStack.getItemMeta() != null;
                         if (itemStack.getItemMeta().getItemName().equalsIgnoreCase("Witch Selector Item")) {
@@ -71,8 +80,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.WITCH);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.witch().size(); i++) {
-                                    player.sendMessage(Description.witch().get(i));
+                                for (String i : Description.witch()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -81,8 +90,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.BREEZE);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.breeze().size(); i++) {
-                                    player.sendMessage(Description.breeze().get(i));
+                                for (String i : Description.breeze()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -91,8 +100,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.SPIDER);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.spider().size(); i++) {
-                                    player.sendMessage(Description.spider().get(i));
+                                for (String i : Description.spider()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -101,8 +110,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.DOLPHIN);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.dolphin().size(); i++) {
-                                    player.sendMessage(Description.dolphin().get(i));
+                                for (String i : Description.dolphin()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -111,8 +120,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.IRON_GOLEM);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.iron_golem().size(); i++) {
-                                    player.sendMessage(Description.iron_golem().get(i));
+                                for (String i : Description.iron_golem()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -121,8 +130,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.WARRIOR);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.warrior().size(); i++) {
-                                    player.sendMessage(Description.warrior().get(i));
+                                for (String i : Description.warrior()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -131,8 +140,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.GUNNER);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.gunner().size(); i++) {
-                                    player.sendMessage(Description.gunner().get(i));
+                                for (String i : Description.gunner()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -141,8 +150,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.BUILDER);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.builder().size(); i++) {
-                                    player.sendMessage(Description.builder().get(i));
+                                for (String i : Description.builder()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -151,8 +160,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.MINER);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.miner().size(); i++) {
-                                    player.sendMessage(Description.miner().get(i));
+                                for (String i : Description.miner()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -161,8 +170,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.ANTMAN);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.antman().size(); i++) {
-                                    player.sendMessage(Description.antman().get(i));
+                                for (String i : Description.antman()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -171,8 +180,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.WITHER);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.wither().size(); i++) {
-                                    player.sendMessage(Description.wither().get(i));
+                                for (String i : Description.wither()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }
@@ -181,8 +190,8 @@ public class SelectorMenu implements Listener {
                                 uhcPlayer.setUhcClass(UhcClass.BLAZE);
                             }
                             if (e.isRightClick()) {
-                                for (int i = 0; i < Description.blaze().size(); i++) {
-                                    player.sendMessage(Description.blaze().get(i));
+                                for (String i : Description.blaze()) {
+                                    player.sendMessage(i);
                                 }
                                 player.closeInventory();
                             }

@@ -327,4 +327,14 @@ public class MenuItems {
         itemStack.setItemMeta(itemMeta);
         return itemStack;
     }
+    public static ItemStack credits() {
+        ItemStack itemStack = new ItemStack(Material.KNOWLEDGE_BOOK);
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        assert itemMeta != null;
+        itemMeta.setItemName("Credits Button");
+        itemMeta.setDisplayName(ChatColor.GREEN + "Mostrar creditos del Plugin");
+        itemMeta.setMaxStackSize(1);
+        itemStack.setItemMeta(itemMeta);
+        return itemStack;
+    }
 }
