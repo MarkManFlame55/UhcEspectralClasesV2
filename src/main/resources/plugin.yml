@@ -2,7 +2,10 @@ name: UhcEspectralClases
 version: '${project.version}'
 main: online.espectral.uhcespectralclases.UhcEspectralClases
 api-version: '1.20'
-depend: [WorldEdit]
+author: MarkManFlame_55
+description: UHC Clases Scenario plugin for UHC Espectral comunnity
+website: https://github.com/MarkManFlame55/UhcEspectralClasesV2
+depend: [FastAsyncWorldEdit]
 commands:
   class:
     description: "Main Command for UHC ESPECTRAL CLASES"

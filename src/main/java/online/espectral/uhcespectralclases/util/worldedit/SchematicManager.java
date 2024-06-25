@@ -64,8 +64,8 @@ public final class  SchematicManager {
                     .to(location)
                     .copyBiomes(false)
                     .copyEntities(true)
-                    .ignoreAirBlocks(false)
-                    .ignoreStructureVoidBlocks(true)
+                    .ignoreAirBlocks(true)
+                    //.ignoreStructureVoidBlocks(true)
                     .build();
 
             Operations.complete(operation);

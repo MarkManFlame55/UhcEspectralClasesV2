@@ -147,7 +147,7 @@ public class BuilderItem implements Listener {
             }
         }
     }
-    private void rightClickAbility(UhcPlayer uhcPlayer, Location pos) {
+    private void rightClickAbility(UhcPlayer uhcPlayer, Location pos) throws WorldEditException {
         Player player = uhcPlayer.getPlayer();
         World world = pos.getWorld();
         assert world != null;
@@ -164,11 +164,7 @@ public class BuilderItem implements Listener {
             case EAST -> rotation = 270;
         }
         AffineTransform rotate = new AffineTransform().rotateY(rotation);
-        try {
-            clipboard = clipboard.transform(rotate);
-        } catch (WorldEditException e) {
-            e.getStackTrace();
-        }
+        clipboard = clipboard.transform(rotate);
         SchematicManager.pasteSchematic(clipboard, world, pos.getBlockX(), pos.getBlockY(), pos.getBlockZ());
         world.spawnParticle(Particle.WHITE_SMOKE, pos, 50, 1,1,1);
         world.playSound(pos, Sound.BLOCK_AMETHYST_BLOCK_BREAK, 1.0f, 1.0f);

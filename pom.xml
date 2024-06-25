@@ -34,11 +34,14 @@
                 <executions>
                     <execution>
                         <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>D:\Server 1.20.6\plugins</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <outputDirectory>D:\Paper 1.20.6\plugins</outputDirectory>
-                </configuration>
             </plugin>
         </plugins>
         <resources>
