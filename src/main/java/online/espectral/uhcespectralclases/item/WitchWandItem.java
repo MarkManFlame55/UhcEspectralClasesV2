@@ -147,10 +147,12 @@ public class WitchWandItem implements Listener {
                 int affectedPlayers = 0;
                 for (Entity entity : player.getNearbyEntities(32,32,32)) {
                     if (entity instanceof Player player1) {
-                        affectedPlayers++;
-                        player1.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Time.secondsToTicks(10), 0, false, false));
-                        player1.playSound(player1, Sound.ENTITY_ILLUSIONER_MIRROR_MOVE, 1.0f, 1.0f);
-                        ServerMessage.unicastInfo(player1, ChatColor.GRAY + "Una bruja te ha detectado usando su hechizo...");
+                        if (player1.getGameMode().equals(GameMode.SURVIVAL)) {
+                            affectedPlayers++;
+                            player1.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Time.secondsToTicks(10), 0, false, false));
+                            player1.playSound(player1, Sound.ENTITY_ILLUSIONER_MIRROR_MOVE, 1.0f, 1.0f);
+                            ServerMessage.unicastInfo(player1, ChatColor.GRAY + "Una bruja te ha detectado usando su hechizo...");
+                        }
                     }
                 }
                 if (affectedPlayers <= 0) {

@@ -113,16 +113,16 @@ public class CannonItem implements Listener {
     }
     private void rightClickAbility(Player player) {
         boolean gotItem = false;
-        for (int i = 0; i < player.getInventory().getSize(); i++) {
-            ItemStack itemStack1 = player.getInventory().getItem(i);
-            if (itemStack1 != null && itemStack1.isSimilar(PluginItems.cannonBullet())) {
-                itemStack1.setAmount(itemStack1.getAmount()-1);
+        for (ItemStack itemStack : player.getInventory().getContents()) {
+            if (itemStack.isSimilar(PluginItems.cannonBullet())) {
+                if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+                    itemStack.setAmount(itemStack.getAmount() - 1);
+                }
                 Snowball snowball = player.launchProjectile(Snowball.class);
                 Vector direction = player.getEyeLocation().getDirection();
                 snowball.setItem(tnt());
                 snowball.setVelocity(direction.multiply(1));
                 gotItem = true;
-                break;
             }
         }
         if (!gotItem) {

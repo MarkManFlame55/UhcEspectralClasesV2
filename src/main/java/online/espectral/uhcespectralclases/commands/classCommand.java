@@ -141,6 +141,12 @@ public class classCommand implements CommandExecutor, TabCompleter {
                                         ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
                                         ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
                                         player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
+                                    } else if (strings[2].equalsIgnoreCase("BUILDER")) {
+                                        uhcPlayer.setUhcClass(UhcClass.BUILDER);
+                                        BuilderAbility.init(uhcPlayer);
+                                        ServerMessage.unicastSuccess(player, "Se ha dado la clase " + strings[2] + " a " + target.getName());
+                                        ServerMessage.unicastSuccess(target, "Has recibido la clase " + strings[2]);
+                                        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 1.5f);
                                     } else {
                                         ServerMessage.unicastError(player, "No se encuentra la clase " + strings[2] + ", puede que la hayas escrito mal. Puedes consultar las clases mirando el comando /class list");
                                         player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, 1.0f, 0.5f);
@@ -159,7 +165,7 @@ public class classCommand implements CommandExecutor, TabCompleter {
                         if (strings.length == 2) {
                             Player target = server.getPlayer(strings[1]);
                             if (target != null) {
-                                UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
+                                UhcPlayer uhcPlayer = uhcGame.getPlayer(target.getUniqueId());
                                 if (uhcPlayer != null) {
                                     if (uhcPlayer.hasUhcClass()) {
                                         ServerMessage.unicastInfo(player, target.getName() + " tiene la clase " + uhcPlayer.getUhcClass());

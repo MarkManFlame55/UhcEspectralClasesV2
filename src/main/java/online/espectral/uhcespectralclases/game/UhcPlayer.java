@@ -10,7 +10,7 @@ import java.util.UUID;
 public class UhcPlayer {
     private final UUID uuid;
     private UhcClass uhcClass;
-    private Player player;
+    private final Player player;
     private UhcGame game;
     private boolean scaleState;
     private boolean sizeChanged;
@@ -32,7 +32,7 @@ public class UhcPlayer {
         this.game = game;
     }
     public Player getPlayer() {
-        return Bukkit.getPlayer(uuid);
+        return this.player;
     }
     public UUID getUuid() {
         return this.uuid;
