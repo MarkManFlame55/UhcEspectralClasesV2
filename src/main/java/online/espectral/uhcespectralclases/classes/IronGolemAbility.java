@@ -31,7 +31,7 @@ public class IronGolemAbility implements Listener {
         if (e.getEntity() instanceof Player player) {
             UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
             if (uhcPlayer != null && uhcPlayer.hasUhcClass() && uhcPlayer.getUhcClass().equals(UhcClass.IRON_GOLEM)) {
-                e.setDamage(e.getDamage()*0.66);
+                e.setDamage(e.getDamage()*0.75);
             }
         }
     }

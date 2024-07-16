@@ -10,6 +10,7 @@ public class ServerMessage {
 
     private static final String prefix = ChatColor.WHITE + "" + ChatColor.BOLD + "[" + ChatColor.AQUA + ChatColor.BOLD + "UHC Clases" + ChatColor.WHITE + ChatColor.BOLD + "] " + ChatColor.GRAY + "➤ " + ChatColor.RESET;
     public static final String NOT_ALLOWED = "No puedes usar este item";
+    public static final String ON_COOLDOWN = "La habilidad sigue en cooldown!";
 
     public static void broadcast(String message) {
         Server server = Bukkit.getServer();

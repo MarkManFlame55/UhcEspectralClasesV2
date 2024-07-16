@@ -39,7 +39,7 @@ public class CannonItem implements Listener {
 
 
     public static ItemStack give() {
-        ItemStack itemStack = new ItemStack(Material.IRON_HORSE_ARMOR);
+        ItemStack itemStack = new ItemStack(Material.COAST_ARMOR_TRIM_SMITHING_TEMPLATE);
         ItemMeta itemMeta = itemStack.getItemMeta();
         assert itemMeta != null;
         itemMeta.setItemName("Powder Cannon");

@@ -9,7 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 public class MinerAbility implements Listener {
 
     public static void init(UhcPlayer uhcPlayer) {
-        uhcPlayer.getPlayer().getInventory().addItem(MinerPickaxeItem.give());
+        uhcPlayer.getPlayer().getInventory().addItem(MinerPickaxeItem.stone());
         uhcPlayer.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, PotionEffect.INFINITE_DURATION, 0, false, false, false));
         uhcPlayer.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.HASTE, PotionEffect.INFINITE_DURATION, 0, false, false, false));
     }

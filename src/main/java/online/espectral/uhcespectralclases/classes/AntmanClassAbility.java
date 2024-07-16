@@ -18,19 +18,4 @@ public class AntmanClassAbility implements Listener {
     public static void init(UhcPlayer uhcPlayer) {
         uhcPlayer.getPlayer().getInventory().addItem(AntmanItem.give());
     }
-    @EventHandler
-    public void onPlayerDamage(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player player) {
-            if (uhcGame.getPlayer(player.getUniqueId()) != null) {
-                UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
-                if (uhcPlayer.getUhcClass().equals(UhcClass.ANTMAN) && uhcPlayer.isSizeChanged()) {
-                    if (uhcPlayer.getScaleState()) {
-                        e.setDamage(e.getDamage()*0.25);
-                    } else {
-                        e.setDamage(e.getDamage()*1.50);
-                    }
-                }
-            }
-        }
-    }
 }

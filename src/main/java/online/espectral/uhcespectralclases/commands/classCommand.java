@@ -19,6 +19,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.StringUtil;
+import org.mozilla.javascript.commonjs.module.provider.StrongCachingModuleScriptProvider;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +31,7 @@ public class classCommand implements CommandExecutor, TabCompleter {
 
     UhcGame uhcGame = UhcEspectralClases.getUhcGame();
     List<String> options = new ArrayList<>();
+    List<String> classes = new ArrayList<>();
 
     public classCommand() {
         options.add("selector");
@@ -42,6 +44,9 @@ public class classCommand implements CommandExecutor, TabCompleter {
         options.add("reload");
         options.add("credits");
         options.add("remove");
+        for (UhcClass uhcClass : UhcClass.values()) {
+            classes.add("" + uhcClass);
+        }
     }
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -260,6 +265,14 @@ public class classCommand implements CommandExecutor, TabCompleter {
             StringUtil.copyPartialMatches(strings[0], options, completions);
             Collections.sort(completions);
             return completions;
+        }
+        if (strings.length == 3 && commandSender instanceof Player) {
+            if (strings[0].equalsIgnoreCase("give")) {
+                List<String> completions = new ArrayList<>();
+                StringUtil.copyPartialMatches(strings[2], classes, completions);
+                Collections.sort(completions);
+                return completions;
+            }
         }
         return null;
     }

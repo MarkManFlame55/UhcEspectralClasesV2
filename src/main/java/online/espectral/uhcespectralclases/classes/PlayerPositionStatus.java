@@ -26,16 +26,21 @@ public class PlayerPositionStatus {
                     UhcPlayer uhcPlayer = uhcGame.getPlayer(player.getUniqueId());
                     if (uhcPlayer != null && uhcPlayer.hasUhcClass()) {
                         if (uhcPlayer.getUhcClass().equals(UhcClass.MINER)) {
-                            double y = player.getLocation().getY();
-                            World world = player.getWorld();
-                            if (y < world.getHighestBlockYAt(player.getLocation())) {
-                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10, 1, false, false, false));
+                            if (player.getWorld().getEnvironment().equals(World.Environment.NORMAL)) {
+                                double y = player.getLocation().getY();
+                                World world = player.getWorld();
+                                if (y < 60) {
+                                    player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10, 1, false, false, false));
+                                }
                             }
                         }
                         if (uhcPlayer.getUhcClass().equals(UhcClass.BLAZE)) {
                             if (player.isInWater() && !player.isInsideVehicle()) {
                                 player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 10, 0, false, false, false));
                                 player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 40, 0, false, false, false));
+                            }
+                            if (player.getWorld().getEnvironment().equals(World.Environment.NETHER)) {
+                                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10, 1, false, false, false));
                             }
                         }
                     }

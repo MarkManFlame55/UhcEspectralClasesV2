@@ -108,7 +108,7 @@ public class AntmanItem implements Listener {
             if (uhcPlayer.getScaleState()) {
                 scale.setBaseValue(1.5D);
                 world.spawnParticle(Particle.TRIAL_SPAWNER_DETECTION, player.getLocation(), 50,1,1,1);
-                player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Time.secondsToTicks(30), 2, false, false, false));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Time.secondsToTicks(5), 0, false, false, false));
                 player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, Time.secondsToTicks(30), 0, false, false, false));
                 entityInteraction.setBaseValue(BLOCK_ENTITY_INTERACTION_RANGE_DEFAULT+1);
                 blockInteraction.setBaseValue(BLOCK_ENTITY_INTERACTION_RANGE_DEFAULT+1);
@@ -117,7 +117,7 @@ public class AntmanItem implements Listener {
             } else {
                 scale.setBaseValue(0.5D);
                 world.spawnParticle(Particle.TRIAL_SPAWNER_DETECTION_OMINOUS, player.getLocation(), 50,1,1,1);
-                player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, Time.secondsToTicks(30), 0, false, false, false));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Time.secondsToTicks(30), 1, false, false, false));
                 entityInteraction.setBaseValue(BLOCK_ENTITY_INTERACTION_RANGE_DEFAULT-1.5);
                 blockInteraction.setBaseValue(BLOCK_ENTITY_INTERACTION_RANGE_DEFAULT-1.5);
                 stepHeight.setBaseValue(0.3D);

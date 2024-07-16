@@ -20,7 +20,7 @@ public class WitherAbility implements Listener {
     UhcGame uhcGame = UhcEspectralClases.getUhcGame();
 
     public static void init(UhcPlayer uhcPlayer) {
-        uhcPlayer.getPlayer().getInventory().addItem(WitherSwordItem.give());
+        uhcPlayer.getPlayer().getInventory().addItem(WitherSwordItem.stone());
     }
 
     @EventHandler

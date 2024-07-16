@@ -16,21 +16,22 @@ public final class UhcEspectralClases extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        //Generar la partida
+        // Generar la partida
         uhcGame = new UhcGame(this.getServer());
-        //Carpeta para los Schematics de la clase BUILDER
+
+        // Carpeta para los Schematics de la clase BUILDER
         createFolders();
-        //Comandos
+        // Comandos
         getCommand("class").setExecutor(new classCommand());
-        //Eventos Pasivos sobre el servidor
+        // Eventos Pasivos sobre el servidor
         getServer().getPluginManager().registerEvents(new PlayerMilkPrevnt(), this);
         getServer().getPluginManager().registerEvents(new ClassHurtSounds(), this);
         getServer().getPluginManager().registerEvents(new ClassDeathRemoval(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        //Cosas de Menus
+        // Cosas de Menus
         getServer().getPluginManager().registerEvents(new SelectorMenu(), this);
         getServer().getPluginManager().registerEvents(new HostMenu(), this);
-        //Eventos relacionados con las clases y sus habilidades
+        // Eventos relacionados con las clases y sus habilidades
         getServer().getPluginManager().registerEvents(new AntmanItem(), this);
         getServer().getPluginManager().registerEvents(new SelectorItem(), this);
         getServer().getPluginManager().registerEvents(new WitchWandItem(), this);
@@ -50,8 +51,7 @@ public final class UhcEspectralClases extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BreezeAbility(), this);
         getServer().getPluginManager().registerEvents(new CannonItem(), this);
         getServer().getPluginManager().registerEvents(new BuilderItem(), this);
-        //Crafteos Custom
-        RecipeManager.init();
+
     }
 
     @Override

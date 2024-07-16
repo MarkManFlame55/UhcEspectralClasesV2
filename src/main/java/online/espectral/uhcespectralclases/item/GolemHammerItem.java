@@ -114,6 +114,6 @@ public class GolemHammerItem implements Listener {
         new DelayedTask(() -> {
             world.playSound(pos, Sound.BLOCK_ANVIL_LAND, 0.5f, 1.0f);
         },20);
-        player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Time.secondsToTicks(10), 2, false, false, false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Time.secondsToTicks(3), 1, false, false, false));
     }
 }
